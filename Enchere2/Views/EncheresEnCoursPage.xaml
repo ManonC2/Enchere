@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Enchere2.Views.EncheresEnCoursPage">
+    
+    <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="logo_icone_blanc.png" VerticalOptions="Center" HeightRequest="64" Margin="0,0,0,50"/>
+        </StackLayout>
+        <StackLayout HorizontalOptions="Center" >
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding EnchereEnCours}" SelectionMode="Single" SelectionChangedCommand="{Binding EnchereSimple}" SelectedItem="{Binding EnchereActuelle}" VerticalOptions="Fill">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="100,5" BackgroundColor="White">
+                                <Image Grid.ColumnSpan="2"
+                                       Grid.RowSpan="10"
+                                       Source="{Binding LeProduit.Photo}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="30"
+                                       WidthRequest="30" />
+                                <Label Grid.Column="2"
+                                       Grid.ColumnSpan="2"
+                                       Grid.RowSpan="9"
+                                       Text="{Binding LeProduit.Nom}"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Column="2"
+                                       Grid.RowSpan="9"
+                                       Text="{Binding Prixreserve, StringFormat='{0}€'}"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="EndAndExpand" 
+                                       />
+                                <Label Grid.Column="3"
+                                       Grid.RowSpan="9"
+                                       Text="{Binding LeMagasin.Ville, StringFormat='{0}  '}"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalTextAlignment="End"
+                                       />
+                                    <Label
+                                       Grid.ColumnSpan="4"
+                                       Grid.RowSpan="14"
+                                       Text="{Binding LeTypeEnchere.Nom, StringFormat='Enchère {0}'}"
+                                       TextColor="white"
+                                       BackgroundColor="black"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="EndAndExpand"
+                                       FontSize="Large"
+                                       />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

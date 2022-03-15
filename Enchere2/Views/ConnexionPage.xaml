@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere2.Views.ConnexionPage" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Label HorizontalTextAlignment="Center"  TextColor="White" Text="Veuillez vous connecter" FontSize="Title"/>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout BackgroundColor="Black" Orientation="Vertical" Padding="24,24,24,24" >
+                <Entry Placeholder="Entrez votre email" BackgroundColor="#222222" PlaceholderColor="White" />
+                <Entry IsPassword="true" BackgroundColor="#222222" Placeholder="Entrez votre mot de passe" PlaceholderColor="White" />
+                <Button Text="Se connecter" BackgroundColor="White" TextColor="Black" Margin="0,80,0,0"/>
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere2.Views.AccueilPage"
+             xmlns:vm="clr-namespace:Enchere2.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:AccueilViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">black</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="logo_icone_blanc.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout BackgroundColor="Black" Orientation="Vertical" Padding="24,24,24,24" >
+                <Label HorizontalTextAlignment="Center"  TextTransform="Uppercase" TextColor="White" Text="Bienvenue sur les enchères GSB" FontSize="Title"/>
+                <Button Margin="0,10,0,0" Text="Se connecter"
+                        Clicked="ConnexionButton"
+                        BackgroundColor="white"
+                        TextColor="black" />
+                <Button Margin="0,10,0,0" Text="Créer un compte"
+                        Clicked="CreationCompteButton"
+                        BackgroundColor="white"
+                        TextColor="black" />
+                <Button Margin="0,10,0,0" Text="Voir les enchères en cours"
+                        Clicked="EncheresButton"
+                        BackgroundColor="white"
+                        TextColor="black" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

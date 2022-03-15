@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere2.Views.CreationComptePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Label HorizontalTextAlignment="Center"  TextColor="White" Text="Pour créer un compte, veuillez remplir le formulaire ci-dessous :" FontSize="Title"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout BackgroundColor="Black" Orientation="Vertical" Padding="24,24,24,24" >
+                    <Entry Placeholder="Pseudonyme" BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
+                    <Entry Placeholder="Email" BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
+                    <Entry IsPassword="true" BackgroundColor="#222222" Placeholder="Mot de passe" PlaceholderColor="White" TextColor="white"/>
+                    <Button Text="Se connecter" BackgroundColor="White" TextColor="Black" Margin="0,40,0,0"/>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere2.Views.EncherePage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Black">
+            <Image Source="https://www.nautiljon.com/images/goodies/00/22/naruto_shippuden_-_hachibi_killer_bee_-_jinchuuriki_killer_bee_ver_-_hqs_tsume_4022.jpg" Margin="0,40,0,0" HeightRequest="300"/>
+            <Label Text="Nom de la figurine" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Label Text="Lieu du magasin" TextColor="white" HorizontalTextAlignment="Center"/>
+            <Grid>
+                <Frame CornerRadius="20" />
+                <Label Text="Prix Actuel" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            </Grid>
+            <Grid>
+                <Frame CornerRadius="20" />
+                <Label Text="Temps restant (ou terminé)" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            </Grid>
+            <Entry Keyboard="Numeric" TextColor="White" HorizontalTextAlignment="Center" Margin="0,40,0,0" Placeholder="Entrez un prix en euros" HorizontalOptions="CenterAndExpand" PlaceholderColor="White" BackgroundColor="#222222"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
