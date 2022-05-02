@@ -17,10 +17,10 @@
             </StackLayout>
             <ScrollView Grid.Row="1">
                 <StackLayout BackgroundColor="Black" Orientation="Vertical" Padding="24,24,24,24" >
-                    <Entry Placeholder="Pseudonyme" BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
-                    <Entry Placeholder="Email" BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
-                    <Entry IsPassword="true" BackgroundColor="#222222" Placeholder="Mot de passe" PlaceholderColor="White" TextColor="white"/>
-                    <Button Text="Se connecter" BackgroundColor="White" TextColor="Black" Margin="0,40,0,0"/>
+                    <Entry Placeholder="Pseudonyme" x:Name="PseudoEntre" BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
+                    <Entry Placeholder="Email" Text="{Binding Email}" x:Name="EmailEntre"  BackgroundColor="#222222" PlaceholderColor="White" TextColor="White"/>
+                    <Entry IsPassword="true" Text="{Binding Password}" x:Name="PasswordEntre" BackgroundColor="#222222" Placeholder="Mot de passe" PlaceholderColor="White" TextColor="white"/>
+                    <Button Text="Créer mon compte" Clicked="InscriptionClicked" BackgroundColor="White" TextColor="Black" Margin="0,40,0,0"/>
 
                 </StackLayout>
             </ScrollView>
