@@ -17,9 +17,9 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout BackgroundColor="Black" Orientation="Vertical" Padding="24,24,24,24" >
-                <Entry Placeholder="Entrez votre email" BackgroundColor="#222222" PlaceholderColor="White" />
-                <Entry IsPassword="true" BackgroundColor="#222222" Placeholder="Entrez votre mot de passe" PlaceholderColor="White" />
-                <Button Text="Se connecter" BackgroundColor="White" TextColor="Black" Margin="0,80,0,0"/>
+                <Entry Placeholder="Entrez votre email" x:Name="EmailEntre" BackgroundColor ="#222222" PlaceholderColor="White" TextColor="White"/>
+                <Entry IsPassword="true" TextColor="White"  x:Name="PasswordEntre" BackgroundColor="#222222" Placeholder="Entrez votre mot de passe" PlaceholderColor="White" />
+                <Button Text="Se connecter" Clicked="ConnexionClicked" BackgroundColor="White" TextColor="Black" Margin="0,80,0,0"/>
 
             </StackLayout>
         </ScrollView>

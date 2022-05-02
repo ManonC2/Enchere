@@ -4,18 +4,56 @@
              x:Class="Enchere2.Views.EncherePage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="Black">
-            <Image Source="https://www.nautiljon.com/images/goodies/00/22/naruto_shippuden_-_hachibi_killer_bee_-_jinchuuriki_killer_bee_ver_-_hqs_tsume_4022.jpg" Margin="0,40,0,0" HeightRequest="300"/>
-            <Label Text="Nom de la figurine" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Label Text="Lieu du magasin" TextColor="white" HorizontalTextAlignment="Center"/>
-            <Grid>
-                <Frame CornerRadius="20" />
-                <Label Text="Prix Actuel" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            <Label Text="{Binding LaEnchere.LeProduit.Nom}" TextColor="White" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Image Source="{Binding LaEnchere.LeProduit.Photo}" HeightRequest="300" />
+
+            <Grid HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Frame
+                       CornerRadius="100"
+                       HeightRequest="40"
+                       WidthRequest="40"/>
+                <Label
+                    Text="{Binding LEncherir.prixenchere, StringFormat='{0} €'}"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
             </Grid>
-            <Grid>
-                <Frame CornerRadius="20" />
-                <Label Text="Temps restant (ou terminé)" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                <Label Text="Progression de l'enchère :" TextColor="White" TextTransform="Uppercase" HorizontalOptions="Center"/>
+                <ProgressBar x:Name="progressBar" ProgressColor="White"></ProgressBar>
+            <Grid HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                 <Frame
+                       CornerRadius="100"
+                       HeightRequest="20"
+                       WidthRequest="140"/>
+                  <Entry
+                      Keyboard="Numeric"
+                      TextColor="Black"
+                      HorizontalTextAlignment="Center"
+                      Placeholder="Enchérir"
+                      HorizontalOptions="Center"
+                      PlaceholderColor="#33000000"
+                      BackgroundColor="White"/>
             </Grid>
-            <Entry Keyboard="Numeric" TextColor="White" HorizontalTextAlignment="Center" Margin="0,40,0,0" Placeholder="Entrez un prix en euros" HorizontalOptions="CenterAndExpand" PlaceholderColor="White" BackgroundColor="#222222"/>
+            <ImageButton Source="tick.png" BackgroundColor="Transparent" HeightRequest="70"></ImageButton>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

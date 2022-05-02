@@ -20,9 +20,9 @@
                 <Setter Property="Shell.DisabledColor" Value="Black" />
                 <Setter Property="Shell.UnselectedColor" Value="Black" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="Black"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="Black"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -93,7 +93,6 @@
     <FlyoutItem Title="Une enchère" Icon="auction.png">
         <ShellContent Route="EncherePage" ContentTemplate="{DataTemplate local:EncherePage}" />
     </FlyoutItem>
-
 
 
     <!--<MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">

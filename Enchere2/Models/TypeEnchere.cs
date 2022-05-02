@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Enchere2.Modeles
+namespace Enchere2.Models
 {
     public class TypeEnchere
     {

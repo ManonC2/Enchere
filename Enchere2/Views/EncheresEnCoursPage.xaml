@@ -1,15 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              x:Class="Enchere2.Views.EncheresEnCoursPage">
-    
+
     <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <Image Source="logo_icone_blanc.png" VerticalOptions="Center" HeightRequest="64" Margin="0,0,0,50"/>
+                <Image Source="logo_icone_blanc.png" VerticalOptions="Center" HeightRequest="64" Margin="0,0,0,20"/>
         </StackLayout>
+        <Button
+                x:Name="boutonPicker"
+                Text="Sélectionner un type d'enchère"
+                Clicked="PickerApparition"
+                BackgroundColor="White"
+                CornerRadius="100"
+                TextColor="Black"/>
+        <syncfusion:SfPicker
+                        PickerMode="Dialog"
+                        HeaderBackgroundColor="Black"
+                        OKButtonTextColor="Black"
+                        CancelButtonTextColor="Black"
+                        HeaderText="Sélectionner un type d'enchère"
+                        x:Name="picker"
+                        OkButtonClicked="PickerSelection"
+                        ItemsSource="{Binding ListeNomEncheres}"
+                        SelectedItemTextColor="Black"
+                        ShowFooter="True"
+                        BorderColor="White"
+                        />
         <StackLayout HorizontalOptions="Center" >
             <ScrollView>
-                <CollectionView ItemsSource="{Binding EnchereEnCours}" SelectionMode="Single" SelectionChangedCommand="{Binding EnchereSimple}" SelectedItem="{Binding EnchereActuelle}" VerticalOptions="Fill">
+                <CollectionView x:Name="collection" ItemsSource="{Binding EncheresAffichees}" SelectionMode="Single" SelectionChangedCommand="{Binding EnchereSimple}" SelectedItem="{Binding EnchereActuelle}" VerticalOptions="Fill">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"/>
                     </CollectionView.ItemsLayout>

@@ -1,4 +1,4 @@
-﻿using Enchere2.Modeles;
+﻿using Enchere2.Models;
 using Enchere2.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,12 @@ namespace Enchere2.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new EnchereViewModel(enchere);
+        }
+
+        protected override void OnAppearing()
+        {
+            double progress = viewModel.Progress;
+            progressBar.ProgressTo(viewModel.Progress, 2250, Easing.CubicIn) ;
         }
     }
 }

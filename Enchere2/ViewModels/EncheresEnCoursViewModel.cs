@@ -1,10 +1,11 @@
-﻿using Enchere2.Modeles;
+﻿using Enchere2.Models;
 using Enchere2.Services;
 using Enchere2.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Enchere2.ViewModels
@@ -13,18 +14,23 @@ namespace Enchere2.ViewModels
     {
         #region Attributs
         private readonly Api _apiServices = new Api();
-        ObservableCollection<Enchere> _maListeEnchere;
-        ObservableCollection<Enchere> _enchereEnCours;
-        private List<int> _maListeTest;
+        private ObservableCollection<Enchere> _encheresClassiques;
+        private ObservableCollection<Enchere> _encheresInverses;
+        private ObservableCollection<Enchere> _encheresFlash;
+        private ObservableCollection<Enchere> _enchereEnCours;
+        private ObservableCollection<Enchere> _encheresAffichees;
         private Enchere _enchere;
+        ObservableCollection<string> _listeNomEncheres;
         #endregion
 
         #region Constructeurs
 
         public EncheresEnCoursViewModel()
         {
-            MaListeTest = new List<int>();
-            GetEnchere();
+            ListeNomEncheres = new ObservableCollection<string>();
+            ListeNomEncheres.Add("Enchères Classiques");
+            ListeNomEncheres.Add("Enchères Inversées");
+            ListeNomEncheres.Add("Enchères Flash");
             GetEnchereEnCours();
             EnchereSimple = new Command(OnTapSelectedEnchere);
         }
@@ -33,23 +39,42 @@ namespace Enchere2.ViewModels
         #endregion
 
         #region Getters/Setters
-        public ObservableCollection<Enchere> MaListeEnchere
-        {
-            get { return _maListeEnchere; }
-            set { SetProperty(ref _maListeEnchere, value); }
-        }
         public ObservableCollection<Enchere> EnchereEnCours
         {
             get { return _enchereEnCours; }
             set { SetProperty(ref _enchereEnCours, value); }
         }
 
-
-        public List<int> MaListeTest
+        public ObservableCollection<Enchere> EncheresClassiques
         {
-            get { return _maListeTest;  }
-            set { SetProperty(ref _maListeTest, value); }
+            get { return _encheresClassiques; }
+            set { SetProperty(ref _encheresClassiques, value); }
         }
+
+        public ObservableCollection<Enchere> EncheresInverses
+        {
+            get { return _encheresInverses; }
+            set { SetProperty(ref _encheresInverses, value); }
+        }
+
+        public ObservableCollection<Enchere> EncheresFlash
+        {
+            get { return _encheresFlash; }
+            set { SetProperty(ref _encheresFlash, value); }
+        }
+
+        public ObservableCollection<string> ListeNomEncheres
+        {
+            get { return _listeNomEncheres; }
+            set { SetProperty(ref _listeNomEncheres, value); }
+        }
+
+        public ObservableCollection<Enchere> EncheresAffichees
+        {
+            get { return _encheresAffichees; }
+            set { SetProperty(ref _encheresAffichees, value); }
+        }
+
 
         public Enchere EnchereActuelle
         {
@@ -60,28 +85,62 @@ namespace Enchere2.ViewModels
         #endregion
 
         #region Methodes
-        //public async void GetOneEnchere(Enchere uneEnchere)
-        //{
-        //    Enchere.CollClasse.Clear();
-        //    Enchere res = await _apiServices.GetOneAsync<Enchere>
-        //           ("api/getEnchereTestObjet", Enchere.CollClasse, uneEnchere.Id);
-        //}
-
-        public async void GetEnchere()
-        {
-            MaListeEnchere = await _apiServices.GetAllAsync<Enchere>
-                   ("api/getEnchere", Enchere.CollClasse);
-        }
         public async void GetEnchereEnCours()
         {
-            EnchereEnCours = await _apiServices.GetAllAsync<Enchere>
+            EncheresAffichees = await _apiServices.GetAllAsync<Enchere>
                    ("api/getEncheresEnCours", Enchere.CollClasse);
+        }
+
+        public async Task<ObservableCollection<Enchere>> GetEncheresClassiques(int id)
+        {
+            EncheresClassiques = await _apiServices.GetAllAsyncID<Enchere>
+                ("api/getEncheresEnCours", Enchere.CollClasse, "IdTypeEnchere", id);
+            Enchere.CollClasse.Clear();
+            return EncheresClassiques;
+        }
+        public async Task<ObservableCollection<Enchere>> GetEncheresInverses(int id)
+        {
+            EncheresInverses = await _apiServices.GetAllAsyncID<Enchere>
+                ("api/getEncheresEnCours", Enchere.CollClasse, "IdTypeEnchere", id);
+            Enchere.CollClasse.Clear();
+            return EncheresInverses;
+
+        }
+        public async Task<ObservableCollection<Enchere>> GetEncheresFlash(int id)
+        {
+            EncheresFlash = await _apiServices.GetAllAsyncID<Enchere>
+                ("api/getEncheresEnCours", Enchere.CollClasse, "IdTypeEnchere", id);
+            Enchere.CollClasse.Clear();
+            return EncheresFlash;
+
         }
 
         private async void OnTapSelectedEnchere()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new EncherePage(EnchereActuelle));
         }
-        #endregion
+
+        public async  void AffichageEncheres(string selection)
+        {
+            Enchere.CollClasse.Clear();
+            switch (selection)
+            {
+                case "Enchères Classiques":
+                    //foreach(Enchere e in EncheresClassiques)
+                    //{
+                    //    EncheresAffichees.Add(e);
+                    //}
+                    EncheresAffichees = await GetEncheresClassiques(1);
+                    break;
+                case "Enchères Inversées":
+                    EncheresAffichees = await GetEncheresInverses(2);
+                    break;
+                case "Enchères Flash":
+                    EncheresAffichees = await GetEncheresFlash(3);
+                    break;
+            }
+
+        }
     }
-}
+        }
+        #endregion

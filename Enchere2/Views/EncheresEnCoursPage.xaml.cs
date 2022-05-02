@@ -1,4 +1,4 @@
-﻿using Enchere2.Modeles;
+﻿using Enchere2.Models;
 using Enchere2.Services;
 using Enchere2.ViewModels;
 using System;
@@ -24,6 +24,25 @@ namespace Enchere2.Views
             BindingContext = viewModel = new EncheresEnCoursViewModel();
         }
 
+        void SelectedEnchere(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            var enchere = (Enchere)e.CurrentSelection.FirstOrDefault();
+            Navigation.PushAsync(new EncherePage(enchere));
+        }
 
+        async void PickerSelection(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            string pickerSelection = picker.SelectedItem.ToString();
+            collection.IsVisible = true;
+            boutonPicker.IsVisible = true;
+            viewModel.AffichageEncheres(pickerSelection);
+        }
+
+        void PickerApparition(System.Object sender, System.EventArgs e)
+        {
+            collection.IsVisible = true;
+            picker.IsOpen = true;
+            boutonPicker.IsVisible = false;
+        }
     }
 }
